@@ -2,6 +2,11 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\customerController;
+use App\Http\Controllers\supplierController;
+use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\CatagoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,10 +50,35 @@ Route::post('/update-customer/{id}',[customerController::class,'updateCustomer']
 
 // Suppliers route
 
-Route::get('/add-customer',[customerController::class,'addCustomer'])->name('add.customer');
-Route::post('/insert-customer',[customerController::class,'insertCustomer'])->name('insert.customer');
-Route::get('/all-customer',[customerController::class,'allCustomer'])->name('all.customer');
-Route::get('/delete-customer/{id}',[customerController::class,'deleteCustomer']);
-Route::get('/view-customer/{id}',[customerController::class,'viewCustomer']);
-Route::get('/edit-customer/{id}',[customerController::class,'editCustomer']);
-Route::post('/update-customer/{id}',[customerController::class,'updateCustomer']);
+Route::get('/add-supplier',[supplierController::class,'addSupplier'])->name('add.supplier');
+Route::post('/insert-supplier',[supplierController::class,'insertSupplier'])->name('insert.supplier');
+Route::get('/all-supplier',[supplierController::class,'allSupplier'])->name('all.supplier');
+Route::get('/delete-supplier/{id}',[supplierController::class,'deleteSupplier']);
+Route::get('/view-supplier/{id}',[supplierController::class,'viewSupplier']);
+Route::get('/edit-supplier/{id}',[supplierController::class,'editSupplier']);
+Route::post('/update-supplier/{id}',[supplierController::class,'updateSupplier']);
+
+// Advance salary
+Route::get('/add-advance-salary',[SalaryController::class,'addsalary'])->name('add.advanceSalary');
+Route::post('/insert-advance-salary',[SalaryController::class,'insertslary'])->name('insert.salary');
+ Route::get('/all-pay-salary',[SalaryController::class,'allpaysalary'])->name('all.paysalary');
+
+
+//  Catagory route
+Route::get('/add-catagories',[CatagoryController::class,'addcatagories'])->name('add.catagories');
+Route::post('/insert-catagories',[CatagoryController::class,'insertcatagories'])->name('insert.catagories');
+Route::get('/all-catagories',[CatagoryController::class,'allcatagories'])->name('all.catagories');
+Route::get('/delete-catagories/{id}',[CatagoryController::class,'deleteCatagories']);
+
+
+// Product route
+Route::get('/add-product',[ProductController::class,'addProduct'])->name('add.product');
+Route::post('/insert-product',[ProductController::class,'insertProduct'])->name('insert.product');
+Route::get('/all-product',[ProductController::class,'allProduct'])->name('all.product');
+Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
+Route::get('/view-product/{id}',[ProductController::class,'viewProduct']);
+
+// Attendance Route
+Route::get('/take-attendance',[AttendanceController::class,'takeAttendance'])->name('take.attendance');
+Route::post('/insert-attendance',[AttendanceController::class,'insertAttendance'])->name('insert.attendance');
+Route::get('/all-attentance',[AttendanceController::class,'allAttendance'])->name('all.attendance');
