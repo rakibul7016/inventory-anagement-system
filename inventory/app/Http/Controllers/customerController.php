@@ -25,7 +25,6 @@ class customerController extends Controller
     {
 
         $validated = $request->validate([
-            'name' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'bank_name' => 'required',
@@ -36,7 +35,7 @@ class customerController extends Controller
         $customer->email = $request->email;
         $customer->phone = $request->phone;
         $customer->address = $request->address;
-        $customer->shop_name = $request->shope_name;
+        $customer->shop_name = $request->shop_name;
         $customer->account_holder = $request->account_holder;
         $customer->account_number = $request->account_number;
         $customer->bank_name = $request->bank_name;
@@ -61,7 +60,7 @@ class customerController extends Controller
 
                 );
 
-                    return Redirect()->route('all.customer')->with($notification);
+                    return Redirect()->back()->with($notification);
                 } else {
                     echo'1dfdf';
                     $notification=array(
@@ -116,11 +115,11 @@ class customerController extends Controller
             return Redirect()->back()->with($notification);
         }
     }
-    // public function editcustomer($id)
-    // {
-    //     $edit = customers::find($id);
-    //     return view('edit_customer', compact('edit'));
-    // }
+    public function editcustomer($id)
+    {
+        $edit = customer::find($id);
+        return view('edit_customer', compact('edit'));
+    }
 
 
 

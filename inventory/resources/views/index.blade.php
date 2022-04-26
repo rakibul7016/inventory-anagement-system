@@ -1,4 +1,4 @@
-@extends('layouts.header')
+
     <body class="fixed-left">
 
         <!-- Begin page -->

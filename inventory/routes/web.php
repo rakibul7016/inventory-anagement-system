@@ -8,6 +8,8 @@ use App\Http\Controllers\CatagoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AttendanceController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PosController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,8 +79,22 @@ Route::post('/insert-product',[ProductController::class,'insertProduct'])->name(
 Route::get('/all-product',[ProductController::class,'allProduct'])->name('all.product');
 Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
 Route::get('/view-product/{id}',[ProductController::class,'viewProduct']);
+Route::get('/import-product',[ProductController::class,'importProduct'])->name('import.product');
+Route::get('/export',[ProductController::class,'export'])->name('export');
+Route::post('/import',[ProductController::class,'import'])->name('import');
 
 // Attendance Route
 Route::get('/take-attendance',[AttendanceController::class,'takeAttendance'])->name('take.attendance');
 Route::post('/insert-attendance',[AttendanceController::class,'insertAttendance'])->name('insert.attendance');
 Route::get('/all-attentance',[AttendanceController::class,'allAttendance'])->name('all.attendance');
+
+// point Of sell (Pos)
+Route::get('/point-of-sell',[PosController::class,'pos'])->name('pos');
+
+// Cart Route
+Route::post('/add-cart',[CartController::class,'index'])->name('add.cart');
+Route::post('/cart-update/{rowId}',[CartController::class,'CartUpdate'])->name('cart.update');
+Route::get('/cart-remove/{rowId}',[CartController::class,'CartRemove'])->name('cart.remove');
+Route::get('/creat-invoice',[CartController::class,'CreatInvoice'])->name('creat.invoice');
+Route::post('/final-invoice',[CartController::class,'FinalInvoice'])->name('final.invoice');
+

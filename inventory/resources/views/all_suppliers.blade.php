@@ -12,10 +12,10 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Welcome !</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Moltran</a></li>
-                            <li class="active">Dashboard</li>
+                            <li class="active">Dashboard
+
                         </ol>
                     </div>
                 </div>
@@ -25,9 +25,9 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">All Catagories
-                                    <a href="{{ route('add.catagories') }}" class="btn btn-primary pull-right">Add New</a>
-
+                                <h3 class="panel-title">All Suppliers
+                                    <a href="{{ route('add.supplier') }}" class="btn btn-primary pull-right">Add New</a>
+                                </li>
                                 </h3>
                             </div>
                             <div class="panel-body">
@@ -36,21 +36,27 @@
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>SL</th>
                                                     <th>Name</th>
+                                                    <th>Phone</th>
+                                                    <th>Address</th>
+                                                    <th>city</th>
+                                                    <th>Photo</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
 
 
                                             <tbody>
-                                                @foreach (  $catagories as $row )
+                                                @foreach (  $supplier as $row )
                                                 <tr>
-                                                    <td>{{ $row->id }}</td>
-                                                    <td>{{ $row->cat_name }}</td>
+                                                    <td>{{ $row->customer_name }}</td>
+                                                    <td>{{ $row->phone }}</td>
+                                                    <td>{{ $row->address }}</td>
+                                                    <td>{{ $row->city }}</td>
+                                                    <td ><img src="{{ asset($row->photo) }}" alt=""style="height:80px; width:80px;"></td>
                                                     <td>
-                                                        <a href="{{ url('/edit-customer/'.$row->id) }}" class="btn btn-primary">Edit</a>
-                                                        <a href="{{ url('/delete-catagories/'.$row->id) }}" class="btn btn-danger">Delete</a>
+                                                        <a href="{{ url('/edit-supplier/'.$row->id) }}" class="btn btn-primary">Edit</a>
+                                                        <a href="{{ url('/delete-customer/'.$row->id) }}" class="btn btn-danger">Delete</a>
                                                         <a href="{{ url('/view-customer/'.$row->id) }}" class="btn btn-success">View</a>
                                                     </td>
                                                 </tr>

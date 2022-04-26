@@ -25,7 +25,9 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Datatable</h3>
+                                <h3 class="panel-title">All Customers
+                                    <a href="{{ route('add.customer') }}" class="btn btn-primary pull-right">Add New</a>
+                                </h3>
                             </div>
                             <div class="panel-body">
                                 <div class="row">

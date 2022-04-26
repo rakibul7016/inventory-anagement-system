@@ -12,7 +12,6 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Welcome !</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Moltran</a></li>
                             <li class="active">Dashboard</li>
@@ -25,7 +24,9 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Datatable</h3>
+                                <h3 class="panel-title">All Product
+                                    <a href="{{ route('add.product') }}" class="btn btn-primary pull-right">Add New</a>
+                                </h3>
                             </div>
                             <div class="panel-body">
                                 <div class="row">

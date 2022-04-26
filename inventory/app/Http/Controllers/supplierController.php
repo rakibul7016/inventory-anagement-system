@@ -80,41 +80,47 @@ class supplierController extends Controller
            return Redirect()->back();
         }
     }
-    // // All supplier show
-    // public function allsupplier()
-    // {
-    //     $supplier = supplier::all();
-    //     return view('all_supplier', compact('supplier'));
-    // }
-    // //Show single data
-    // public function viewsupplier($id)
-    // {
-    //     $single = supplier::find($id);
+    // All supplier show
+    public function allsupplier()
+    {
+        $supplier = suppliers::all();
+        return view('all_suppliers', compact('supplier'));
+    }
+    //Show single data
+    public function viewsupplier($id)
+    {
+        $single = suppliers::find($id);
 
-    //     return view('single_view', compact('single'));
-    // }
-    // // Delete single data
-    // public function deletesupplier($id)
-    // {
-    //     $delete = supplier::find($id);
-    //     $photo=$delete->photo;
-    //     unlink($photo);
-    //     $deleteUser= supplier::find($id)->delete();
-    //     if ($deleteUser) {
-    //         $notification=array(
-    //             'messege'=>'Successfully supplier Inserted',
-    //             'alert-type'=>'success'
+        return view('single_view', compact('single'));
+    }
+    // Delete single data
+    public function deletesupplier($id)
+    {
+        $delete = suppliers::find($id);
+        $photo=$delete->photo;
+        unlink($photo);
+        $deleteUser= suppliers::find($id)->delete();
+        if ($deleteUser) {
+            $notification=array(
+                'messege'=>'Successfully supplier Inserted',
+                'alert-type'=>'success'
 
-    //         );
+            );
 
-    //         return Redirect()->route('all.supplier')->with($notification);
-    //     } else {
-    //         $notification=array(
-    //             'messege'=>'error',
-    //             'alert-type'=>'success'
-    //         );
+            return Redirect()->route('all.supplier')->with($notification);
+        } else {
+            $notification=array(
+                'messege'=>'error',
+                'alert-type'=>'success'
+            );
 
-    //         return Redirect()->back()->with($notification);
-    //     }
-    // }
+            return Redirect()->back()->with($notification);
+        }
+    }
+    public function editcustomer($id)
+    {
+        $edit = suppliers::find($id);
+        return view('edit_supplier', compact('edit'));
+    }
+
 }

@@ -51,20 +51,20 @@ class EmployeeController extends Controller
                 $employee->photo = $image_url;
                 $employee->save();
                 if ($employee) {
-                    $notification=array(
+                    $messege=array(
                     'messege'=>'Successfully Employee Inserted',
                     'alert-type'=>'success'
 
                 );
 
-                    return Redirect()->route('all.employee')->with($notification);
+                    return Redirect()->route('all.employee')->with($messege);
                 } else {
-                    $notification=array(
+                    $messege=array(
                     'messege'=>'error',
                     'alert-type'=>'success'
                 );
 
-                    return Redirect()->back()->with($notification);
+                    return Redirect()->back()->with($messege);
                 }
             } else {
                 echo "first";
@@ -118,64 +118,64 @@ class EmployeeController extends Controller
 
 
 
-    // public function updateEmployee(Request $request,$id)
-    // {
-    //     $validated = $request->validate([
-    //     'name' => 'required',
-    //     'phone' => 'required',
-    //     'address' => 'required',
-    //     'salary' => 'required',
-    //     'nid_no' => 'required',
-    // ]);
+    public function updateEmployee(Request $request,$id)
+    {
+        $validated = $request->validate([
+        'name' => 'required',
+        'phone' => 'required',
+        'address' => 'required',
+        'salary' => 'required',
+        'nid_no' => 'required',
+    ]);
 
-    //     $update=array();
-    //     $update['name'] = $request->name;
-    //     $update['email'] = $request->email;
-    //     $update['phone'] = $request->phone;
-    //     $update['address'] = $request->address;
-    //     $update['exprience'] = $request->exprience;
-    //     $update['salary'] = $request->salary;
-    //     $update['vacation'] = $request->vacation;
-    //     $update['city'] = $request->city;
-    //     $update['nod_no'] = $request->nid_no;
-    //     $image = $request->photo;
+        $update=array();
+        $update['name'] = $request->name;
+        $update['email'] = $request->email;
+        $update['phone'] = $request->phone;
+        $update['address'] = $request->address;
+        $update['exprience'] = $request->exprience;
+        $update['salary'] = $request->salary;
+        $update['vacation'] = $request->vacation;
+        $update['city'] = $request->city;
+        $update['nid_no'] = $request->nid_no;
+        $image = $request->photo;
 
-    //     if ($image) {
-    //         $image_name = Str::random(5);
-    //         $ext = strtolower($image->getClientOriginalExtension());
-    //         $image_full_name = $image_name.'.'.$ext;
-    //         $upload_path = 'employee/';
-    //         $image_url =  $upload_path.$image_full_name;
-    //         $success=$image->move(public_path('employee'), $image_full_name);
-    //         if ($success) {
-    //             $update['photo'] = $image_url;
-    //             $img = DB::table('employees')->where('id',$id)->fist();
-    //             $image_path = $img->photo;
-    //             $done=unlink($image_path);
-    //             $user=DB::table('employees')->where('id',$id)->update($update);
-    //             if ($user) {
-    //                 $notification=array(
-    //             'messege'=>'Successfully Employee Inserted',
-    //             'alert-type'=>'success'
+        if ($image) {
+            $image_name = Str::random(20);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name.'.'.$ext;
+            $upload_path = 'employee/';
+            $image_url =  $upload_path.$image_full_name;
+            $success=$image->move($upload_path, $image_full_name);
+            if ($success) {
+                $update['photo'] = $image_url;
+                $image = DB::table('employees')->where('id',$id)->first();
+                $image_path = $image->photo;
+                $done=unlink($image_path);
+                $user=DB::table('employees')->where('id',$id)->update($update);
+                if ($user) {
+                    $notification=array(
+                'messege'=>'Successfully Employee Inserted',
+                'alert-type'=>'success'
 
-    //         );
+            );
 
-    //                 return Redirect()->route('all.employee')->with($notification);
-    //             } else {
-    //                 $notification=array(
-    //             'messege'=>'error',
-    //             'alert-type'=>'success'
-    //         );
+                    return Redirect()->route('all.employee')->with($notification);
+                } else {
+                    $notification=array(
+                'messege'=>'error',
+                'alert-type'=>'success'
+            );
 
-    //                 return Redirect()->back()->with($notification);
-    //             }
-    //         } else {
-    //             echo'sdfdfdf';
-    //             // return Redirect()->back();
-    //         }
-    //     } else {
-    //         echo't dfdfdf';
-    //         // return Redirect()->back();
-    //     }
-    // }
+                    return Redirect()->back()->with($notification);
+                }
+            } else {
+                echo'sdfdfdf';
+                // return Redirect()->back();
+            }
+        } else {
+            echo't dfdfdf';
+            // return Redirect()->back();
+        }
+    }
 }

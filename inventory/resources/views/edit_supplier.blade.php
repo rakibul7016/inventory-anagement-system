@@ -12,6 +12,7 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
+                        <h4 class="pull-left page-title">Welcome !</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Moltran</a></li>
                             <li class="active">Dashboard</li>
@@ -26,10 +27,10 @@
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Add employee</h3>
+                                <h3 class="panel-title">Edit Supplier</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form" action="{{ route('insert.employee') }}" method="post"
+                                <form role="form" action="{{ URL::to('edit-supplier') }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @if ($errors->any())
@@ -42,49 +43,62 @@
                                         </div>
                                     @endif
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Enter name">
+                                        <label for="exampleInputEmail1">Supplier Name</label>
+                                        <input type="text" class="form-control" id="name" name="supplier_name"
+                                        value="{{ $edit->name }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                                            placeholder="Enter email">
+                                        value="{{ $edit->email }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">phone</label>
                                         <input type="text" class="form-control" id="phone" name="phone"
-                                            placeholder="Enter phone">
+                                        value="{{ $edit->phone }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input type="text" class="form-control" id="address" placeholder="Enter address"
+                                        <input type="text" class="form-control" id="address" value="{{ $edit->address }}"
                                             name="address">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exprience">Exprience</label>
-                                        <input type="text" class="form-control" id="exprience" name="exprience"
-                                            placeholder="Enter exprience">
+                                        <label for="address">Supplier Type</label>
+                                        <select name="type" id="" class="form-control">
+                                            <option value="Distibutor">Distibutor</option>
+                                            <option value="Hole_Seller">Hole Seller</option>
+                                            <option value="Brochure">Brochure</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="salary">Salary</label>
-                                        <input type="text" class="form-control" id="salary" name="salary"
-                                            placeholder="Enter salary">
+                                        <label for="exprience">Shop Name</label>
+                                        <input type="text" class="form-control" id="exprience" name="shop_name"
+                                            placeholder="Enter Shop Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Vacation</label>
-                                        <input type="text" class="form-control" id="vacation" name="vacation"
-                                            placeholder="Enter vacation">
+                                        <label for="salary">Account Holder</label>
+                                        <input type="text" class="form-control" id="salary" name="account_holder"
+                                            placeholder="Enter Account Holder">
                                     </div>
                                     <div class="form-group">
-                                        <label for="city">City</label>
-                                        <input type="text" class="form-control" id="city" name="city"
-                                            placeholder="Enter city">
+                                        <label for="exampleInputEmail1">Account Number</label>
+                                        <input type="text" class="form-control" id="vacation" name="account_number"
+                                            placeholder="Enter Account Number">
                                     </div>
                                     <div class="form-group">
-                                        <label for="nid_no">Nid No</label>
-                                        <input type="text" class="form-control" id="nid_no" name="nid_no"
-                                            placeholder="Enter Nid No">
+                                        <label for="city">Bank Name</label>
+                                        <input type="text" class="form-control" id="city" name="bank_name"
+                                            placeholder="Enter Bank Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nid_no">Bank Branch</label>
+                                        <input type="text" class="form-control" id="nid_no" name="bank_branch"
+                                            placeholder="Enter Bank Branch">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nid_no">City</label>
+                                        <input type="text" class="form-control" id="nid_no" name="city"
+                                            placeholder="Enter City">
                                     </div>
                                     <div class="form-group">
                                         <label for="photo">Photo</label>
